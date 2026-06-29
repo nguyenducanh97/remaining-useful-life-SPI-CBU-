@@ -1,0 +1,37 @@
+task,case,method,RUL_MAE,n
+Task 1,56 panels,SPI+CBU (ours),6.27,504
+Task 1,56 panels,SPI+TBU,29.12,504
+Task 1,56 panels,Lin,25.24,504
+Task 1,56 panels,Log-Bayes,168.83,504
+Task 1,56 panels,Wiener,57.67,504
+Task 1,56 panels,Weibull,64.25,504
+Task 2,10 panels to 80%,SPI+CBU (ours),6.91,58
+Task 2,10 panels to 80%,SPI+TBU,23.83,58
+Task 2,10 panels to 80%,Lin,19.16,58
+Task 2,10 panels to 80%,Log-Bayes,312.96,58
+Task 2,10 panels to 80%,Wiener,53.05,58
+Task 2,10 panels to 80%,Weibull,72.73,58
+Task 3 KCoHCF,87%,SPI+CBU (ours),209.36,74
+Task 3 KCoHCF,87%,SPI+TBU,1118.31,74
+Task 3 KCoHCF,87%,Lin,1392.45,74
+Task 3 KCoHCF,87%,Log-Bayes,16242.27,74
+Task 3 KCoHCF,87%,Wiener,2762.78,74
+Task 3 KCoHCF,87%,Weibull,3713.19,74
+Task 3 KCoHCF,90%,SPI+CBU (ours),66.57,73
+Task 3 KCoHCF,90%,SPI+TBU,128.9,73
+Task 3 KCoHCF,90%,Lin,159.87,73
+Task 3 KCoHCF,90%,Log-Bayes,15603.48,73
+Task 3 KCoHCF,90%,Wiener,2062.48,73
+Task 3 KCoHCF,90%,Weibull,4490.09,73
+Task 3 Urea,86%,SPI+CBU (ours),19.08,77
+Task 3 Urea,86%,SPI+TBU,47.9,77
+Task 3 Urea,86%,Lin,58.09,77
+Task 3 Urea,86%,Log-Bayes,857.57,77
+Task 3 Urea,86%,Wiener,70.6,77
+Task 3 Urea,86%,Weibull,73.8,77
+Task 3 Urea,90%,SPI+CBU (ours),4.28,75
+Task 3 Urea,90%,SPI+TBU,5.18,75
+Task 3 Urea,90%,Lin,4.45,75
+Task 3 Urea,90%,Log-Bayes,770.5,75
+Task 3 Urea,90%,Wiener,8.27,75
+Task 3 Urea,90%,Weibull,8.35,75
