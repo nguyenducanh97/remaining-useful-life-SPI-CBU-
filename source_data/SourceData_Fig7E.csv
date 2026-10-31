@@ -1,0 +1,12 @@
+source,target,usd_per_kg_N,share_of_revenue_pct
+(NH4)2SO4,Revenue,2.46931,81.12
+H2,Revenue,0.27225,8.944
+PO4 fertilizer,Revenue,0.2288,7.516
+K fertilizer,Revenue,0.07367,2.42
+Revenue,Operating margin,2.77059,91.017
+Revenue,Operating costs,0.27344,8.983
+Operating costs,H2SO4,0.23632,7.764
+Operating costs,Electricity,0.02269,0.745
+Operating costs,PePurease beads,0.01036,0.34
+Operating costs,Pt-Ti mesh,0.00283,0.093
+Operating costs,KCoHCF,0.00124,0.041
