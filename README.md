@@ -69,7 +69,6 @@ Source-data CSVs in `source_data/` carry the matching `SourceData_<item>.csv` na
 | `export_new_data.py`, `export_metrics.py`, `export_source_data.py` | data / metric / source-data tables |
 | `export_all_results.py` | upstream: rebuilds the per-cycle result CSVs from raw data (see note below) |
 | `Electrode_RUL_Colab.py` | complete original analysis notebook (full upstream pipeline, reference) |
-| `Electrode_RUL_Data/` | raw cycling data (3 CSVs) |
 
 ## Method summary
 
