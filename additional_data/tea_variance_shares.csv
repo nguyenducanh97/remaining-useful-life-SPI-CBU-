@@ -1,0 +1,35 @@
+campus,input,unit,spearman_rho,variance_share_pct
+SKKU,salt,USD/kg,0.99638,99.2845
+SKKU,cR,g N/L urine,0.05718,0.3269
+SKKU,h2,USD/kg,0.05078,0.2579
+SKKU,po4,USD/kg PO4,0.02142,0.0459
+SKKU,acid,USD/kg,-0.01822,0.0332
+SKKU,Lbead,cycles,-0.01472,0.0217
+SKKU,bead,USD/g,-0.01117,0.0125
+SKKU,k,USD/kg K,0.00811,0.0066
+SKKU,pt,USD/cm2,-0.00523,0.0027
+SKKU,cK,g/L,-0.00522,0.0027
+SKKU,Lkco,cycles,0.00475,0.0023
+SKKU,nc,g N/cycle,0.00364,0.0013
+SKKU,yh2,kg H2/kg N,0.00267,0.0007
+SKKU,elec,USD/kWh,0.00238,0.0006
+SKKU,sec,kWh/kg N,-0.00192,0.0004
+SKKU,kco,USD/g,-0.00132,0.0002
+SKKU,cP,g/L,0.00061,0.0
+DU,salt,USD/kg,0.9963,99.273
+DU,h2,USD/kg,0.05093,0.2594
+DU,cR,g N/L urine,0.04859,0.2361
+DU,acid,USD/kg,-0.03221,0.1038
+DU,po4,USD/kg PO4,0.02143,0.0459
+DU,elec,USD/kWh,-0.01653,0.0273
+DU,Lbead,cycles,-0.01475,0.0218
+DU,bead,USD/g,-0.01113,0.0124
+DU,k,USD/kg K,0.00827,0.0068
+DU,sec,kWh/kg N,-0.00607,0.0037
+DU,cK,g/L,-0.00503,0.0025
+DU,pt,USD/cm2,-0.00496,0.0025
+DU,Lkco,cycles,0.00495,0.0025
+DU,nc,g N/cycle,0.00382,0.0015
+DU,yh2,kg H2/kg N,0.00257,0.0007
+DU,kco,USD/g,-0.00122,0.0001
+DU,cP,g/L,0.00064,0.0
