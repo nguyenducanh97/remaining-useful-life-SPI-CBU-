@@ -3008,7 +3008,7 @@ L 499.664048 168.54423
    </g>
   </g>
   <g id="text_113">
-   <!-- Supplementary Fig. 27 | Per-trajectory GM effect on PPC acceptance for 10 trajectories to 80% threshold. Pink circles, with GM; grey triangles, without GM. -->
+   <!-- Supplementary Fig. 65 | Per-trajectory GM effect on PPC acceptance for 10 trajectories to 80% threshold. Pink circles, with GM; grey triangles, without GM. -->
    <g transform="translate(27.670605 11.632469) scale(0.058 -0.058)">
     <defs>
      <path id="DejaVuSans-65" d="M 3597 1894 
@@ -3447,8 +3447,8 @@ z
     <use xlink:href="#DejaVuSans-67" transform="translate(876.050781 0)"/>
     <use xlink:href="#DejaVuSans-2e" transform="translate(939.527344 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(971.314453 0)"/>
-    <use xlink:href="#DejaVuSans-32" transform="translate(1003.101562 0)"/>
-    <use xlink:href="#DejaVuSans-37" transform="translate(1066.724609 0)"/>
+    <use xlink:href="#DejaVuSans-36" transform="translate(1003.101562 0)"/>
+    <use xlink:href="#DejaVuSans-35" transform="translate(1066.724609 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1130.347656 0)"/>
     <use xlink:href="#DejaVuSans-7c" transform="translate(1162.134766 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1195.826172 0)"/>

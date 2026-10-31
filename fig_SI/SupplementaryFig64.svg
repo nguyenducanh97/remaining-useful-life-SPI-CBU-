@@ -13844,7 +13844,7 @@ L 501.504172 347.552366
    </g>
   </g>
   <g id="text_561">
-   <!-- Supplementary Fig. 26 | Per-trajectory Gaussian-mutation effect on PPC acceptance for 56 trajectories. Pink circles, with GM; grey triangles, without GM. -->
+   <!-- Supplementary Fig. 64 | Per-trajectory Gaussian-mutation effect on PPC acceptance for 56 trajectories. Pink circles, with GM; grey triangles, without GM. -->
    <g transform="translate(34.532808 11.556047) scale(0.057 -0.057)">
     <defs>
      <path id="DejaVuSans-6d" d="M 3328 2828 
@@ -14215,8 +14215,8 @@ z
     <use xlink:href="#DejaVuSans-67" transform="translate(876.050781 0)"/>
     <use xlink:href="#DejaVuSans-2e" transform="translate(939.527344 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(971.314453 0)"/>
-    <use xlink:href="#DejaVuSans-32" transform="translate(1003.101562 0)"/>
-    <use xlink:href="#DejaVuSans-36" transform="translate(1066.724609 0)"/>
+    <use xlink:href="#DejaVuSans-36" transform="translate(1003.101562 0)"/>
+    <use xlink:href="#DejaVuSans-34" transform="translate(1066.724609 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1130.347656 0)"/>
     <use xlink:href="#DejaVuSans-7c" transform="translate(1162.134766 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1195.826172 0)"/>

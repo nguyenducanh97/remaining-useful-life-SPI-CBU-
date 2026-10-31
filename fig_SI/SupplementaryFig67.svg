@@ -2504,8 +2504,8 @@ L 484.743187 150.369057
    </g>
   </g>
   <g id="text_79">
-   <!-- Supplementary Fig. 29 | Per-replicate Gaussian-mutation effect on the PPC acceptance for PePurease beads (90% and 86% thresholds). Pink circles, with GM; grey triangles, without GM. -->
-   <g transform="translate(7.2 11.708891) scale(0.059 -0.059)">
+   <!-- Supplementary Fig. 67 | Per-replicate Gaussian-mutation effect on the PPC acceptance for PePurease beads (90% and 86% thresholds). Pink circles, with GM; grey triangles, without GM. -->
+   <g transform="translate(7.200000 11.708891) scale(0.059 -0.059)">
     <defs>
      <path id="DejaVuSans-53" d="M 3425 4513 
 L 3425 3897 
@@ -3047,7 +3047,16 @@ L 750 256
 L 750 794 
 z
 " transform="scale(0.015625)"/>
-    </defs>
+    <path id="DejaVuSans-37" d="M 525 4666 
+L 3525 4666 
+L 3525 4397 
+L 1831 0 
+L 1172 0 
+L 2766 4134 
+L 525 4134 
+L 525 4666 
+z
+" transform="scale(0.015625)"/></defs>
     <use xlink:href="#DejaVuSans-53"/>
     <use xlink:href="#DejaVuSans-75" transform="translate(63.476562 0)"/>
     <use xlink:href="#DejaVuSans-70" transform="translate(126.855469 0)"/>
@@ -3067,8 +3076,8 @@ z
     <use xlink:href="#DejaVuSans-67" transform="translate(876.050781 0)"/>
     <use xlink:href="#DejaVuSans-2e" transform="translate(939.527344 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(971.314453 0)"/>
-    <use xlink:href="#DejaVuSans-32" transform="translate(1003.101562 0)"/>
-    <use xlink:href="#DejaVuSans-39" transform="translate(1066.724609 0)"/>
+    <use xlink:href="#DejaVuSans-36" transform="translate(1003.101562 0)"/>
+    <use xlink:href="#DejaVuSans-37" transform="translate(1066.724609 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1130.347656 0)"/>
     <use xlink:href="#DejaVuSans-7c" transform="translate(1162.134766 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1195.826172 0)"/>

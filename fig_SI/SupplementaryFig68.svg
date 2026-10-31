@@ -1701,7 +1701,7 @@ L 510.305283 46.15685
    </g>
   </g>
   <g id="text_34">
-   <!-- Supplementary Fig. 30 | Soft versus strict Gaussian mutation performance. -->
+   <!-- Supplementary Fig. 68 | Soft versus strict Gaussian mutation performance. -->
    <g transform="translate(149.895938 11.632469) scale(0.058 -0.058)">
     <defs>
      <path id="DejaVuSans-6d" d="M 3328 2828 
@@ -1809,8 +1809,8 @@ z
     <use xlink:href="#DejaVuSans-67" transform="translate(876.050781 0)"/>
     <use xlink:href="#DejaVuSans-2e" transform="translate(939.527344 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(971.314453 0)"/>
-    <use xlink:href="#DejaVuSans-33" transform="translate(1003.101562 0)"/>
-    <use xlink:href="#DejaVuSans-30" transform="translate(1066.724609 0)"/>
+    <use xlink:href="#DejaVuSans-36" transform="translate(1003.101562 0)"/>
+    <use xlink:href="#DejaVuSans-38" transform="translate(1066.724609 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1130.347656 0)"/>
     <use xlink:href="#DejaVuSans-7c" transform="translate(1162.134766 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1195.826172 0)"/>

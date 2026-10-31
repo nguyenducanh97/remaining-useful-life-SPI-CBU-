@@ -2542,8 +2542,8 @@ L 486.808884 233.035747
    </g>
   </g>
   <g id="text_79">
-   <!-- Supplementary Fig. 28 | Per-replicate Gaussian-mutation effect on the PPC acceptance for KCoHCF electrode (90% and 87% thresholds). Pink circles, with GM; grey triangles, without GM. -->
-   <g transform="translate(7.2 11.708891) scale(0.059 -0.059)">
+   <!-- Supplementary Fig. 66 | Per-replicate Gaussian-mutation effect on the PPC acceptance for KCoHCF electrode (90% and 87% thresholds). Pink circles, with GM; grey triangles, without GM. -->
+   <g transform="translate(7.200000 11.708891) scale(0.059 -0.059)">
     <defs>
      <path id="DejaVuSans-53" d="M 3425 4513 
 L 3425 3897 
@@ -3057,8 +3057,8 @@ z
     <use xlink:href="#DejaVuSans-67" transform="translate(876.050781 0)"/>
     <use xlink:href="#DejaVuSans-2e" transform="translate(939.527344 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(971.314453 0)"/>
-    <use xlink:href="#DejaVuSans-32" transform="translate(1003.101562 0)"/>
-    <use xlink:href="#DejaVuSans-38" transform="translate(1066.724609 0)"/>
+    <use xlink:href="#DejaVuSans-36" transform="translate(1003.101562 0)"/>
+    <use xlink:href="#DejaVuSans-36" transform="translate(1066.724609 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1130.347656 0)"/>
     <use xlink:href="#DejaVuSans-7c" transform="translate(1162.134766 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1195.826172 0)"/>

@@ -1192,8 +1192,8 @@ z
    </g>
   </g>
   <g id="text_18">
-   <!-- Supplementary Fig. 31 | Conformal calibration reliability, averaged across tasks (mean +/-1 STD). Grey, raw model interval; pink, after split-conformal; dashed, ideal. -->
-   <g transform="translate(7.2 11.632469) scale(0.058 -0.058)">
+   <!-- Supplementary Fig. 69 | Conformal calibration reliability, averaged across tasks (mean +/-1 STD). Grey, raw model interval; pink, after split-conformal; dashed, ideal. -->
+   <g transform="translate(7.200000 11.632469) scale(0.058 -0.058)">
     <defs>
      <path id="DejaVuSans-53" d="M 3425 4513 
 L 3425 3897 
@@ -1563,8 +1563,8 @@ z
     <use xlink:href="#DejaVuSans-67" transform="translate(876.050781 0)"/>
     <use xlink:href="#DejaVuSans-2e" transform="translate(939.527344 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(971.314453 0)"/>
-    <use xlink:href="#DejaVuSans-33" transform="translate(1003.101562 0)"/>
-    <use xlink:href="#DejaVuSans-31" transform="translate(1066.724609 0)"/>
+    <use xlink:href="#DejaVuSans-36" transform="translate(1003.101562 0)"/>
+    <use xlink:href="#DejaVuSans-39" transform="translate(1066.724609 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1130.347656 0)"/>
     <use xlink:href="#DejaVuSans-7c" transform="translate(1162.134766 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1195.826172 0)"/>

@@ -4927,8 +4927,8 @@ L 601.473485 236.844272
    </g>
   </g>
   <g id="text_90">
-   <!-- Supplementary Fig. 23 | Triplicate capacity retention tracking for the KCoHCF electrode (90%, 87%). SPI+CBU pink circles, SPI+TBU blue squares, linear grey triangles, Log-Bayes orange diamonds, Wiener teal, Weibull purple; black dashed, measured. -->
-   <g transform="translate(7.2 11.938156) scale(0.062 -0.062)">
+   <!-- Supplementary Fig. 61 | Triplicate capacity retention tracking for the KCoHCF electrode (90%, 87%). SPI+CBU pink circles, SPI+TBU blue squares, linear grey triangles, Log-Bayes orange diamonds, Wiener teal, Weibull purple; black dashed, measured. -->
+   <g transform="translate(7.200000 11.938156) scale(0.062 -0.062)">
     <defs>
      <path id="DejaVuSans-6d" d="M 3328 2828 
 Q 3544 3216 3844 3400 
@@ -5089,8 +5089,8 @@ z
     <use xlink:href="#DejaVuSans-67" transform="translate(876.050781 0)"/>
     <use xlink:href="#DejaVuSans-2e" transform="translate(939.527344 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(971.314453 0)"/>
-    <use xlink:href="#DejaVuSans-32" transform="translate(1003.101562 0)"/>
-    <use xlink:href="#DejaVuSans-33" transform="translate(1066.724609 0)"/>
+    <use xlink:href="#DejaVuSans-36" transform="translate(1003.101562 0)"/>
+    <use xlink:href="#DejaVuSans-31" transform="translate(1066.724609 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1130.347656 0)"/>
     <use xlink:href="#DejaVuSans-7c" transform="translate(1162.134766 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1195.826172 0)"/>

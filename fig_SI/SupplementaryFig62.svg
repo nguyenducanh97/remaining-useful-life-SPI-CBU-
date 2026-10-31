@@ -4735,7 +4735,7 @@ L 413.434314 236.870614
    </g>
   </g>
   <g id="text_84">
-   <!-- Supplementary Fig. 24 | Triplicate activity tracking for the PePurease bead (90%, 86%). Same key as Supplementary Fig. 23. -->
+   <!-- Supplementary Fig. 62 | Triplicate activity tracking for the PePurease bead (90%, 86%). Same key as Supplementary Fig. 61. -->
    <g transform="translate(18.315129 11.938156) scale(0.062 -0.062)">
     <defs>
      <path id="DejaVuSans-6d" d="M 3328 2828 
@@ -4921,8 +4921,8 @@ z
     <use xlink:href="#DejaVuSans-67" transform="translate(876.050781 0)"/>
     <use xlink:href="#DejaVuSans-2e" transform="translate(939.527344 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(971.314453 0)"/>
-    <use xlink:href="#DejaVuSans-32" transform="translate(1003.101562 0)"/>
-    <use xlink:href="#DejaVuSans-34" transform="translate(1066.724609 0)"/>
+    <use xlink:href="#DejaVuSans-36" transform="translate(1003.101562 0)"/>
+    <use xlink:href="#DejaVuSans-32" transform="translate(1066.724609 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1130.347656 0)"/>
     <use xlink:href="#DejaVuSans-7c" transform="translate(1162.134766 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(1195.826172 0)"/>
@@ -5021,8 +5021,8 @@ z
     <use xlink:href="#DejaVuSans-67" transform="translate(5939.089844 0)"/>
     <use xlink:href="#DejaVuSans-2e" transform="translate(6002.566406 0)"/>
     <use xlink:href="#DejaVuSans-20" transform="translate(6034.353516 0)"/>
-    <use xlink:href="#DejaVuSans-32" transform="translate(6066.140625 0)"/>
-    <use xlink:href="#DejaVuSans-33" transform="translate(6129.763672 0)"/>
+    <use xlink:href="#DejaVuSans-36" transform="translate(6066.140625 0)"/>
+    <use xlink:href="#DejaVuSans-31" transform="translate(6129.763672 0)"/>
     <use xlink:href="#DejaVuSans-2e" transform="translate(6193.386719 0)"/>
    </g>
   </g>
