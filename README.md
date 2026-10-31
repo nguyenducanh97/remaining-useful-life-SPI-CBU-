@@ -1,6 +1,6 @@
 # SPI+CBU - Remaining-Useful-Life prediction
 
-Self-contained code, data of **every RUL figure and data table** in the manuscript. The method, **SPI+CBU**, is a statistical, online-updatable predictor: a sparse-prior-information (SPI) log-linear degradation model whose coefficients and population prior are learned by sparse Bayesian learning (SBL), updated online by a constrained Bayesian update (CBU) that keeps every prediction inside a historical-lives band via a posterior-predictive check (PPC), with the constraint enforced by Gaussian mutation (GM). The 90% intervals are recalibrated by split-conformal prediction. It is validated on 56 screening trajectories and, in triplicate, on a KCoHCF electrode (5000 cycles) and PePurease urease beads (300 cycles), and benchmarked against five baselines (SPI+TBU, Linear, Log-Bayes, Wiener process, Weibull degradation).
+Self-contained code, data of **every RUL figure and data table** in the manuscript, together with the techno-economic Monte Carlo analysis (**Fig. 7E-G**). The method, **SPI+CBU**, is a statistical, online-updatable predictor: a sparse-prior-information (SPI) log-linear degradation model whose coefficients and population prior are learned by sparse Bayesian learning (SBL), updated online by a constrained Bayesian update (CBU) that keeps every prediction inside a historical-lives band via a posterior-predictive check (PPC), with the constraint enforced by Gaussian mutation (GM). The 90% intervals are recalibrated by split-conformal prediction. It is validated on 56 screening trajectories and, in triplicate, on a KCoHCF electrode (5000 cycles) and PePurease urease beads (300 cycles), and benchmarked against five baselines (SPI+TBU, Linear, Log-Bayes, Wiener process, Weibull degradation).
 
 
 ## Code components
@@ -17,19 +17,22 @@ Self-contained code, data of **every RUL figure and data table** in the manuscri
 | 8 | `export_new_data.py`| `method_comparison_mae.csv`, error-vs-fraction CSVs |
 | 9 | `export_metrics.py` | `per_panel_metrics.csv`, `per_task_metrics_summary.csv` (RMSE & MAE) |
 | 10 | `export_source_data.py` | one tidy `SourceData_<FigID>.csv` per figure (Nature source-data requirement) |
+| 11 | `make_TEA.py` | techno-economics, **Fig. 7E-G**: value of 1 kg recovered N, Monte Carlo annual operating margin (20,000 draws), margin map; `tea_monte_carlo_summary.csv`, `tea_variance_shares.csv` and their source data |
 
 ## Outputs (created/updated under `./outputs/`)
 
 ```
 outputs/
-├── fig_main/        Fig7B, Fig7C, Fig7D                                   (png + svg)
+├── fig_main/        Fig7B, Fig7C, Fig7D, Fig7E, Fig7F, Fig7G               (png + svg)
 ├── fig_SI/          SupplementaryFig54-70, forward_projection_{KCoHCF,Urea}_log, forward_projection_log_perrep    (png + svg)
-├── source_data/     SourceData_Fig7B/C/D, SupplementaryFig54-70 (one CSV per figure)
+├── source_data/     SourceData_Fig7B/C/D/E/F/G, SupplementaryFig54-70 (one CSV per figure)
 ├── additional_data/
       ├── method_comparison_mae.csv      RUL MAE, all tasks x all 6 methods
       ├── per_panel_metrics.csv          RMSE & MAE per panel per method (RUL + tracking)
       ├── per_task_metrics_summary.csv   the same, averaged per task
       ├── calibration_per_task.csv       per-task raw vs conformal coverage (+/-STD)
+      ├── tea_monte_carlo_summary.csv    operating margin percentiles, bootstrap CIs and serviceable capital, per campus
+      ├── tea_variance_shares.csv        Spearman rank correlation and variance share of each input
       ├── task1_curves.csv, task2_curves.csv, task3_curves.csv   per-cycle predictions, all 6 methods
       ├── task4_observed.csv, task4_projection_curve.csv, task4_projection_triplicate.csv
 └── figs/, *coverage*.csv, gm_effect_*.csv, calibration.csv   precomputed result inputs
@@ -42,6 +45,9 @@ The output file names match the manuscript display items directly:
 | `fig_main/Fig7B` | Fig. 7B - short-term RUL validation against the baselines |
 | `fig_main/Fig7C` | Fig. 7C - capacity/activity forward projection |
 | `fig_main/Fig7D` | Fig. 7D - absolute RUL error vs observed fraction (averaged) |
+| `fig_main/Fig7E` | Fig. 7E - value of 1 kg of recovered N at SKKU central prices |
+| `fig_main/Fig7F` | Fig. 7F - annual operating margin, SKKU and University of Delhi (Monte Carlo, 20,000 draws) |
+| `fig_main/Fig7G` | Fig. 7G - operating margin vs (NH4)2SO4 selling price and electricity price |
 | `fig_SI/SupplementaryFig54` | RUL on the 56 screening trajectories |
 | `fig_SI/SupplementaryFig55` | GM ablation, averaged across tasks |
 | `fig_SI/SupplementaryFig56` | RUL prediction to the 80% threshold (reaching set) |
@@ -67,6 +73,7 @@ Source-data CSVs in `source_data/` carry the matching `SourceData_<item>.csv` na
 | `add_logbayes.py`, `add_baselines.py` | append the comparison baselines to the per-cycle CSVs |
 | `make_main.py`, `make_SI_RUL.py`, `make_SI.py`, `make_error_figs.py`, `calib_per_task.py` | figure generators |
 | `export_new_data.py`, `export_metrics.py`, `export_source_data.py` | data / metric / source-data tables |
+| `make_TEA.py` | techno-economic model, Monte Carlo simulation and Fig. 7E-G (self-contained) |
 | `export_all_results.py` | upstream: rebuilds the per-cycle result CSVs from raw data (see note below) |
 | `Electrode_RUL_Colab.py` | complete original analysis notebook (full upstream pipeline, reference) |
 
@@ -85,11 +92,12 @@ Source-data CSVs in `source_data/` carry the matching `SourceData_<item>.csv` na
 - Reaching-to-80% set (10 trajectories): RUL MAE 5.1 cycles, 93% interval coverage; baselines 19-73.
 - Forward projection to 80%: KCoHCF electrode ~1.7-2.0 x 10^5 cycles (conservative floor ~7 x 10^3); PePurease beads ~1.3-2.3 x 10^3 cycles.
 - SPI+CBU has the lowest RUL MAE in every task and case (printed by `add_baselines.py`; tabulated in `outputs/method_comparison_mae.csv`).
+- Techno-economics (20,000 Monte Carlo draws): every draw gives a positive operating margin; median 71,400 USD per year at SKKU and 711,300 USD per year at the University of Delhi. The (NH4)2SO4 selling price explains 99.3% of the variance.
 
 ## Citation
 
 ```
-A durable membrane-free platform for green hydrogen and high-purity ammonium recovery powered by human urine remediation.
+A durable membrane-free platform for green hydrogen and fertilizer-grade ammonium sulfate recovery powered by human urine remediation.
 ├── DOI:
 ├── Duc Anh Nguyen#, Kim Anh Nguyen Thi, Taehun Kim, Hongrae Im, Am Jang* (#first-author, *corresponding author)
 ├── Department of Global Smart City, Sungkyunkwan University (SKKU), 2066, Seobu-ro, Jangan-gu, Suwon, Gyeonggi-do, 16419, Republic of Korea.
