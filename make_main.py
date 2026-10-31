@@ -1,7 +1,7 @@
 import os, numpy as np, pandas as pd, matplotlib.pyplot as plt
 from rul_style import *
 
-# ---- Fig 7A : short-term RUL validation (scatter + thin line; dashed-black truth) ----
+# ---- Fig 7B : short-term RUL validation (scatter + thin line; dashed-black truth) ----
 t2=pd.read_csv(os.path.join(OUT,"task2_curves.csv")); TRAJ="NH4Cl | NaCoHCF"
 d=t2[t2.trajectory==TRAJ]; cbu=d[d.method=="SPI+CBU (ours)"].sort_values("cycle")
 life=float(cbu.true_RUL.iloc[0]+cbu.cycle.iloc[0]); top=life*1.06
@@ -14,9 +14,9 @@ ax.set_xlabel("Cycle"); ax.set_ylabel("Remaining useful life (cycles)")
 ax.set_title("Walk-forward RUL to end-of-life\nNH4Cl | NaCoHCF (life = 70; MAE 5.3 vs 152/94)")
 ax.legend(handles=legend_handles_scatter(),loc="lower left",fontsize=5.4,handlelength=1.3,labelspacing=0.3,borderpad=0.4); frame(ax)
 fig.tight_layout(pad=0.5)
-savef(fig,os.path.join(F_MAIN,"Fig7A.png")); savef(fig,os.path.join(F_MAIN,"Fig7A.pdf")); plt.close(fig)
+savef(fig,os.path.join(F_MAIN,"Fig7B.png")); savef(fig,os.path.join(F_MAIN,"Fig7B.pdf")); plt.close(fig)
 
-# ---- Fig 7B : capacity/activity projection to 80% (all 3 replicates) ----
+# ---- Fig 7C : capacity/activity projection to 80% (all 3 replicates) ----
 fig,axes=plt.subplots(1,2,figsize=(176*MM,70*MM))
 for ax,(mat,info) in zip(axes,MATS.items()):
     fn,cols,w,step,DROP,xmax,title,ylab=info; df=pd.read_csv(os.path.join(DD,fn))
@@ -39,5 +39,5 @@ for ax,(mat,info) in zip(axes,MATS.items()):
     if mat=="KCoHCF": ax.legend(loc="upper right",fontsize=5.4,handlelength=1.3,labelspacing=0.25,borderpad=0.4)
     frame(ax)
 fig.tight_layout(pad=0.6)
-savef(fig,os.path.join(F_MAIN,"Fig7B.png"),bbox_inches="tight"); savef(fig,os.path.join(F_MAIN,"Fig7B.pdf"),bbox_inches="tight"); plt.close(fig)
+savef(fig,os.path.join(F_MAIN,"Fig7C.png"),bbox_inches="tight"); savef(fig,os.path.join(F_MAIN,"Fig7C.pdf"),bbox_inches="tight"); plt.close(fig)
 print("main ok")

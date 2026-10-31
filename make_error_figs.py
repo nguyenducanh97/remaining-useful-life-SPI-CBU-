@@ -75,5 +75,5 @@ for ax,(task,title) in zip(axes,TASKS):
     if task=="task1": ax.legend(loc="lower left",fontsize=5.4,handlelength=1.4,labelspacing=0.3)
 fig.suptitle("Absolute RUL error vs observed fraction: SPI+CBU is consistently lowest at every stage of life",fontsize=7,y=1.01)
 fig.tight_layout(pad=0.6,rect=[0,0,1,0.98])
-savef(fig,os.path.join(F_MAIN,"Fig7C.png"),bbox_inches="tight"); savef(fig,os.path.join(F_SI,"SupplementaryFig25.png"),bbox_inches="tight"); plt.close(fig)
+savef(fig,os.path.join(F_MAIN,"Fig7D.png"),bbox_inches="tight"); savef(fig,os.path.join(F_SI,"SupplementaryFig63.png"),bbox_inches="tight"); plt.close(fig)
 print("average ok")

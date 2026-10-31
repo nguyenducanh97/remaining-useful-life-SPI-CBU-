@@ -1110,7 +1110,7 @@ run_task2_gm()
 
 # %% [markdown]
 # # Final figures and data
-# Regenerates the main, Extended Data and Supplementary figures and the source-data CSVs.
+# Regenerates the main and Supplementary figures and the source-data CSVs.
 
 # %%
 # --- Add Log-Bayes baseline to Task 2 & 3 ---
@@ -1276,8 +1276,8 @@ import os, numpy as np, pandas as pd
 import matplotlib as mpl, matplotlib.pyplot as plt
 
 OUT=OUT_DIR; DD=DATA_DIR
-F_MAIN=os.path.join(OUT,"fig_main"); F_ED=os.path.join(OUT,"fig_ED"); F_SI=os.path.join(OUT,"fig_SI")
-for d in (F_MAIN,F_ED,F_SI): os.makedirs(d,exist_ok=True)
+F_MAIN=os.path.join(OUT,"fig_main"); F_SI=os.path.join(OUT,"fig_SI")
+for d in (F_MAIN,F_SI): os.makedirs(d,exist_ok=True)
 PINK="#D6337C"; BLUE="#2E6FAE"; GREY="#8A8A8A"; DARK="#1A1A1A"; FLOOR="#C0792E"; OLIVE="#B8A11E"; TEAL="#1F9E89"; PURPLE="#7B4FA3"
 mpl.rcParams.update({"font.family":"sans-serif","font.sans-serif":["Arial","DejaVu Sans"],
   "font.size":7,"axes.titlesize":7,"axes.labelsize":7,"xtick.labelsize":6,"ytick.labelsize":6,
@@ -1389,7 +1389,7 @@ def savef(fig,path,**kw):
 
 
 # %%
-# --- Main Fig. 7A / 7B ---
+# --- Main Fig. 7B / 7C ---
 import os, numpy as np, pandas as pd, matplotlib.pyplot as plt
 
 # ---- 7A : validation (scatter+thin line; truth dashed black) ----
@@ -1405,7 +1405,7 @@ ax.set_xlabel("Cycle"); ax.set_ylabel("Remaining useful life (cycles)")
 ax.set_title("Walk-forward RUL to end-of-life\nNH4Cl | NaCoHCF (life = 70; MAE 5.3 vs 152/94)")
 ax.legend(handles=legend_handles_scatter(),loc="lower left",fontsize=5.4,handlelength=1.3,labelspacing=0.3,borderpad=0.4); frame(ax)
 fig.tight_layout(pad=0.5)
-savef(fig,os.path.join(F_MAIN,"Fig7A.png")); savef(fig,os.path.join(F_MAIN,"Fig7A.pdf")); plt.close(fig)
+savef(fig,os.path.join(F_MAIN,"Fig7B.png")); savef(fig,os.path.join(F_MAIN,"Fig7B.pdf")); plt.close(fig)
 
 # ---- 7B : projection, track all 3 reps, legend upper-right ----
 fig,axes=plt.subplots(1,2,figsize=(176*MM,70*MM))
@@ -1430,15 +1430,15 @@ for ax,(mat,info) in zip(axes,MATS.items()):
     if mat=="KCoHCF": ax.legend(loc="upper right",fontsize=5.4,handlelength=1.3,labelspacing=0.25,borderpad=0.4)
     frame(ax)
 fig.tight_layout(pad=0.6)
-savef(fig,os.path.join(F_MAIN,"Fig7B.png"),bbox_inches="tight"); savef(fig,os.path.join(F_MAIN,"Fig7B.pdf"),bbox_inches="tight"); plt.close(fig)
+savef(fig,os.path.join(F_MAIN,"Fig7C.png"),bbox_inches="tight"); savef(fig,os.path.join(F_MAIN,"Fig7C.pdf"),bbox_inches="tight"); plt.close(fig)
 print("main ok")
 
 
 # %%
-# --- Extended Data Fig. 8-9 + forward projection ---
+# --- Supplementary Figs 54 and 70 + forward projection ---
 import os, numpy as np, pandas as pd, matplotlib.pyplot as plt
 
-# ===== Extended Data Fig. 8 : Task1 56-panel RUL (diagonal truth = N-cycle; scatter methods; legend in title) =====
+# ===== Supplementary Fig. 54 : Task1 56-panel RUL (diagonal truth = N-cycle; scatter methods; legend in title) =====
 t1=pd.read_csv(os.path.join(OUT,"task1_curves.csv")); trajs=sorted(t1.trajectory.unique())
 ncol=8; nrow=int(np.ceil(len(trajs)/ncol))
 fig,axes=plt.subplots(nrow,ncol,figsize=(180*MM,(180/ncol*nrow*0.95)*MM)); axes=axes.ravel()
@@ -1453,14 +1453,14 @@ for i,tr in enumerate(trajs):
     ax.set_xlim(0,top); ax.set_ylim(-0.045*top,top)
     ax.set_title(tr,fontsize=4.3,pad=1.5); ax.tick_params(labelsize=4); frame(ax)
 for j in range(len(trajs),len(axes)): axes[j].axis("off")
-fig.suptitle("Extended Data Fig. 8 | Walk-forward RUL to each curve's endpoint across all 56 screening trajectories. "
+fig.suptitle("Supplementary Fig. 54 | Walk-forward RUL to each curve's endpoint across all 56 screening trajectories. "
              "SPI+CBU (pink circles), SPI+TBU (blue squares), linear (grey triangles); black dashed, ground-truth RUL; pink shading, calibrated 90% interval. "
              "SPI+CBU follows the true diagonal; the unconstrained and linear baselines collapse early on the hard panels.",fontsize=5.5,y=1.004)
 fig.supxlabel("Cycle",fontsize=7); fig.supylabel("Remaining useful life (cycles)",fontsize=7)
 fig.tight_layout(pad=0.3,rect=[0.024,0.02,1,0.985])
-savef(fig,os.path.join(F_ED,"ExtendedDataFig8.png"),bbox_inches="tight"); plt.close(fig)
+savef(fig,os.path.join(F_SI,"SupplementaryFig54.png"),bbox_inches="tight"); plt.close(fig)
 
-# ===== Extended Data Fig. 9 : Task3 deployed triplicate RUL (scatter; legend in one panel) =====
+# ===== Supplementary Fig. 70 : Task3 deployed triplicate RUL (scatter; legend in one panel) =====
 t3=pd.read_csv(os.path.join(OUT,"task3_curves.csv")); cov3=pd.read_csv(os.path.join(OUT,"task3_coverage.csv"))
 cases=[("KCoHCF",90.0),("KCoHCF",87.0),("Urea",90.0),("Urea",86.0)]
 fig,axes=plt.subplots(4,3,figsize=(150*MM,180*MM))
@@ -1477,10 +1477,10 @@ for ri,(mat,thr) in enumerate(cases):
         nm="Urease beads" if mat=="Urea" else "KCoHCF electrode"
         ax.set_title("%s, %d%%, rep %d (coverage %.0f%%)"%(nm,int(thr),rep,cov),fontsize=5.3); ax.tick_params(labelsize=5); frame(ax)
 axes[0,2].legend(handles=legend_handles_scatter(),loc="upper right",fontsize=4.6,handlelength=1.3,labelspacing=0.25,borderpad=0.3)
-fig.suptitle("Extended Data Fig. 9 | Triplicate RUL for the deployed materials: KCoHCF electrode (90%, 87%) and urease beads (90%, 86%).",fontsize=6.4,y=1.002)
+fig.suptitle("Supplementary Fig. 70 | Triplicate RUL for the deployed materials: KCoHCF electrode (90%, 87%) and urease beads (90%, 86%).",fontsize=6.4,y=1.002)
 fig.supxlabel("Cycle",fontsize=7); fig.supylabel("Remaining useful life (cycles)",fontsize=7)
 fig.tight_layout(pad=0.3,rect=[0.03,0.02,1,0.99])
-savef(fig,os.path.join(F_ED,"ExtendedDataFig9.png"),bbox_inches="tight"); plt.close(fig)
+savef(fig,os.path.join(F_SI,"SupplementaryFig70.png"),bbox_inches="tight"); plt.close(fig)
 
 # ===== Forward projection to 80%, per replicate (log axis) =====
 fig,axes=plt.subplots(2,3,figsize=(180*MM,120*MM))
@@ -1493,12 +1493,12 @@ for ri,(mat,info) in enumerate(MATS.items()):
         ax.set_title("%s, rep %d: 80%% @ %s (RUL %s)"%(nm,ci+1,format(int(R["cb"]),","),format(int(R["cb"]-R["N"]),",")),fontsize=5.4)
 fig.suptitle("Forward projection to 80% with conservative linear floor, near-term tracking, and future projection (log axis).",fontsize=6.2,y=1.003)
 fig.tight_layout(pad=0.5,rect=[0,0.01,1,0.99])
-savef(fig,os.path.join(F_ED,"forward_projection_log_perrep.png"),bbox_inches="tight"); plt.close(fig)
-print("ED ok")
+savef(fig,os.path.join(F_SI,"forward_projection_log_perrep.png"),bbox_inches="tight"); plt.close(fig)
+print("SI RUL figures ok")
 
 
 # %%
-# --- Supplementary Figs 18-29 incl Task-3 retention ---
+# --- Supplementary Figs 56-67 incl Task-3 retention ---
 import os, numpy as np, pandas as pd, matplotlib.pyplot as plt
 
 GMY=(-0.06,1.06)
@@ -1522,7 +1522,7 @@ for LOGX,tag in [(True,"log"),(False,"lin")]:
         savef(fig,os.path.join(F_SI,"task4_%s_%s.png"%(mat,tag)),bbox_inches="tight"); plt.close(fig)
 print("task4 ok")
 
-# ===== Supplementary Fig. 22 : Task1 capacity tracking, 56 trajectories =====
+# ===== Supplementary Fig. 60 : Task1 capacity tracking, 56 trajectories =====
 t1=pd.read_csv(os.path.join(OUT,"task1_curves.csv")); trajs=sorted(t1.trajectory.unique())
 ncol=8; nrow=int(np.ceil(len(trajs)/ncol))
 fig,axes=plt.subplots(nrow,ncol,figsize=(180*MM,(180/ncol*nrow*0.95)*MM)); axes=axes.ravel()
@@ -1533,12 +1533,12 @@ for i,tr in enumerate(trajs):
     plot_methods(ax,d,"pred_retention",top=None,ms=2.1,lwn=0.5)
     ax.set_title(tr,fontsize=4.3,pad=1.5); ax.tick_params(labelsize=4); frame(ax)
 for j in range(len(trajs),len(axes)): axes[j].axis("off")
-fig.suptitle("Supplementary Fig. 22 | Capacity tracking across all 56 screening trajectories. SPI+CBU (pink circles), SPI+TBU (blue squares), linear (grey triangles); black dashed, measured.",fontsize=5.6,y=1.005)
+fig.suptitle("Supplementary Fig. 60 | Capacity tracking across all 56 screening trajectories. SPI+CBU (pink circles), SPI+TBU (blue squares), linear (grey triangles); black dashed, measured.",fontsize=5.6,y=1.005)
 fig.supxlabel("Cycle",fontsize=7); fig.supylabel("Capacity retention (%)",fontsize=7)
 fig.tight_layout(pad=0.3,rect=[0.024,0.02,1,0.985])
-savef(fig,os.path.join(F_SI,"SupplementaryFig22.png"),bbox_inches="tight"); plt.close(fig)
+savef(fig,os.path.join(F_SI,"SupplementaryFig60.png"),bbox_inches="tight"); plt.close(fig)
 
-# ===== Supplementary Figs 18/19 : Task2 RUL + tracking, reaching set =====
+# ===== Supplementary Figs 56/57 : Task2 RUL + tracking, reaching set =====
 t2=pd.read_csv(os.path.join(OUT,"task2_curves.csv")); cov2=pd.read_csv(os.path.join(OUT,"task2_coverage_per_trajectory.csv")).set_index("traj")["cov90"].to_dict()
 tr2=sorted(t2.trajectory.unique())
 def t2grid(band,fname,ylab,title,showcov=False):
@@ -1559,14 +1559,14 @@ def t2grid(band,fname,ylab,title,showcov=False):
     fig.supxlabel("Cycle",fontsize=7); fig.supylabel(ylab,fontsize=7)
     fig.tight_layout(pad=0.3,rect=[0.024,0.02,1,0.98])
     savef(fig,os.path.join(F_SI,fname),bbox_inches="tight"); plt.close(fig)
-t2grid(True,"SupplementaryFig18.png","Remaining useful life to 80% (cycles)",
-       "Supplementary Fig. 18 | RUL prediction to 80% on the reaching trajectories. SPI+CBU (pink circles), SPI+TBU (blue squares), linear (grey triangles); black dashed, ground truth; pink, calibrated 90% interval; per-panel coverage shown.",showcov=True)
-t2grid(False,"SupplementaryFig19.png","Capacity retention (%)",
-       "Supplementary Fig. 19 | Capacity tracking to 80% on the reaching trajectories. SPI+CBU (pink circles), SPI+TBU (blue squares), linear (grey triangles); black dashed, measured.")
+t2grid(True,"SupplementaryFig56.png","Remaining useful life to 80% (cycles)",
+       "Supplementary Fig. 56 | RUL prediction to 80% on the reaching trajectories. SPI+CBU (pink circles), SPI+TBU (blue squares), linear (grey triangles); black dashed, ground truth; pink, calibrated 90% interval; per-panel coverage shown.",showcov=True)
+t2grid(False,"SupplementaryFig57.png","Capacity retention (%)",
+       "Supplementary Fig. 57 | Capacity tracking to 80% on the reaching trajectories. SPI+CBU (pink circles), SPI+TBU (blue squares), linear (grey triangles); black dashed, measured.")
 print("S6/S7 ok")
 
 
-# ===== Supplementary Figs 23/24 : Task 3 capacity/activity tracking (3 replicates, all methods) =====
+# ===== Supplementary Figs 61/62 : Task 3 capacity/activity tracking (3 replicates, all methods) =====
 t3r=pd.read_csv(os.path.join(OUT,"task3_curves.csv"))
 def t3ret(mat,thrs,fname,title,ylab):
     fig,axes=plt.subplots(2,3,figsize=(150*MM,92*MM))
@@ -1586,11 +1586,11 @@ def t3ret(mat,thrs,fname,title,ylab):
     fig.supxlabel("Cycle",fontsize=7); fig.supylabel(ylab,fontsize=7)
     fig.tight_layout(pad=0.3,rect=[0.03,0.02,1,0.98])
     savef(fig,os.path.join(F_SI,fname),bbox_inches="tight"); plt.close(fig)
-t3ret("KCoHCF",[90.0,87.0],"SupplementaryFig23.png","Supplementary Fig. 23 | Triplicate capacity retention tracking for the KCoHCF electrode (90%, 87%). SPI+CBU pink circles, SPI+TBU blue squares, linear grey triangles, Log-Bayes orange diamonds, Wiener teal, Weibull purple; black dashed, measured.","Capacity retention (%)")
-t3ret("Urea",[90.0,86.0],"SupplementaryFig24.png","Supplementary Fig. 24 | Triplicate activity tracking for the PePurease bead (90%, 86%). Same key as Supplementary Fig. 23.","Relative activity (%)")
+t3ret("KCoHCF",[90.0,87.0],"SupplementaryFig61.png","Supplementary Fig. 61 | Triplicate capacity retention tracking for the KCoHCF electrode (90%, 87%). SPI+CBU pink circles, SPI+TBU blue squares, linear grey triangles, Log-Bayes orange diamonds, Wiener teal, Weibull purple; black dashed, measured.","Capacity retention (%)")
+t3ret("Urea",[90.0,86.0],"SupplementaryFig62.png","Supplementary Fig. 62 | Triplicate activity tracking for the PePurease bead (90%, 86%). Same key as Supplementary Fig. 61.","Relative activity (%)")
 print("task3 retention ok")
 
-# ===== Extended Data Fig. 10 : GM ablation averaged across tasks =====
+# ===== Supplementary Fig. 55 : GM ablation averaged across tasks =====
 g1=pd.read_csv(os.path.join(OUT,"gm_effect_task1_average.csv")); g2=pd.read_csv(os.path.join(OUT,"gm_effect_task2.csv")); g3=pd.read_csv(os.path.join(OUT,"gm_effect_task3_average.csv"))
 fig,axes=plt.subplots(1,3,figsize=(180*MM,56*MM))
 ax=axes[0]
@@ -1605,11 +1605,11 @@ ax=axes[2]; cm=[PINK,BLUE,OLIVE,"#5BA053"]
 for ci,case in enumerate(list(g3.case.unique())):
     dd=g3[g3.case==case]; ax.plot(dd.frac_pct,dd.acc_GM_mean,color=cm[ci%4],lw=1.0,label=case); ax.plot(dd.frac_pct,dd.acc_noGM_mean,color=cm[ci%4],lw=0.8,ls=(0,(2,2)),alpha=0.7)
 ax.set_title("Task 3 (solid, with GM; dashed, without)",fontsize=6); ax.set_xlabel("Observation fraction (%)"); ax.set_ylabel("PPC acceptance"); ax.set_ylim(*GMY); ax.legend(loc="lower right",fontsize=4.3); frame(ax)
-fig.suptitle("Extended Data Fig. 10 | Gaussian-mutation ablation: PPC acceptance without vs with GM (mean +/-1 s.d.).",fontsize=6.2,y=1.04)
+fig.suptitle("Supplementary Fig. 55 | Gaussian-mutation ablation: PPC acceptance without vs with GM (mean +/-1 s.d.).",fontsize=6.2,y=1.04)
 fig.tight_layout(pad=0.5,rect=[0,0,1,0.96])
-savef(fig,os.path.join(F_SI,"ExtendedDataFig10.png"),bbox_inches="tight"); plt.close(fig)
+savef(fig,os.path.join(F_SI,"SupplementaryFig55.png"),bbox_inches="tight"); plt.close(fig)
 
-# ===== Supplementary Fig. 26 : Task1 per-trajectory GM =====
+# ===== Supplementary Fig. 64 : Task1 per-trajectory GM =====
 gp1=pd.read_csv(os.path.join(OUT,"figs","gm_effect_task1.csv")); names=sorted(gp1.name.unique())
 nrow=int(np.ceil(len(names)/8))
 fig,axes=plt.subplots(nrow,8,figsize=(180*MM,(180/8*nrow*0.9)*MM)); axes=axes.ravel()
@@ -1617,21 +1617,21 @@ for i,nm in enumerate(names):
     ax=axes[i]; d=gp1[gp1.name==nm].sort_values("cycle"); gm_panel(ax,d.cycle,d.acc_noGM,d.acc_GM)
     ax.set_title(nm,fontsize=4.0,pad=1.2); ax.tick_params(labelsize=3.6); frame(ax)
 for j in range(len(names),len(axes)): axes[j].axis("off")
-fig.suptitle("Supplementary Fig. 26 | Per-trajectory Gaussian-mutation effect on PPC acceptance for 56 trajectories. Pink circles, with GM; grey triangles, without GM.",fontsize=5.7,y=1.005)
+fig.suptitle("Supplementary Fig. 64 | Per-trajectory Gaussian-mutation effect on PPC acceptance for 56 trajectories. Pink circles, with GM; grey triangles, without GM.",fontsize=5.7,y=1.005)
 fig.supxlabel("Cycle",fontsize=7); fig.supylabel("PPC acceptance",fontsize=7)
 fig.tight_layout(pad=0.3,rect=[0.024,0.02,1,0.985])
-savef(fig,os.path.join(F_SI,"SupplementaryFig26.png"),bbox_inches="tight"); plt.close(fig)
+savef(fig,os.path.join(F_SI,"SupplementaryFig64.png"),bbox_inches="tight"); plt.close(fig)
 
-# ===== Supplementary Figs 27/28/29 : per-trajectory and per-replicate GM =====
+# ===== Supplementary Figs 65/66/67 : per-trajectory and per-replicate GM =====
 gp2=pd.read_csv(os.path.join(OUT,"gm_effect_task2_panels.csv")); tr2b=sorted(gp2.traj.unique())
 fig,axes=plt.subplots(2,5,figsize=(180*MM,80*MM)); axes=axes.ravel()
 for i,tr in enumerate(tr2b):
     ax=axes[i]; d=gp2[gp2.traj==tr].sort_values("cycle"); gm_panel(ax,d.cycle,d.acc_noGM,d.acc_GM)
     ax.set_title(tr,fontsize=4.8,pad=1.5); ax.tick_params(labelsize=4.5); frame(ax)
-fig.suptitle("Supplementary Fig. 27 | Per-trajectory GM effect on PPC acceptance for 10 trajectories to 80% threshold. Pink circles, with GM; grey triangles, without GM.",fontsize=5.8,y=1.01)
+fig.suptitle("Supplementary Fig. 65 | Per-trajectory GM effect on PPC acceptance for 10 trajectories to 80% threshold. Pink circles, with GM; grey triangles, without GM.",fontsize=5.8,y=1.01)
 fig.supxlabel("Cycle",fontsize=7); fig.supylabel("PPC acceptance",fontsize=7)
 fig.tight_layout(pad=0.3,rect=[0.024,0.02,1,0.98])
-savef(fig,os.path.join(F_SI,"SupplementaryFig27.png"),bbox_inches="tight"); plt.close(fig)
+savef(fig,os.path.join(F_SI,"SupplementaryFig65.png"),bbox_inches="tight"); plt.close(fig)
 
 gp3=pd.read_csv(os.path.join(OUT,"gm_effect_task3_panels.csv"))
 def t3gm(cases,fname,suptitle):
@@ -1644,18 +1644,18 @@ def t3gm(cases,fname,suptitle):
     fig.supxlabel("Observation fraction (%)",fontsize=7); fig.supylabel("PPC acceptance",fontsize=7)
     fig.tight_layout(pad=0.3,rect=[0.03,0.02,1,0.98])
     savef(fig,os.path.join(F_SI,fname),bbox_inches="tight"); plt.close(fig)
-t3gm(["KCoHCF 90%","KCoHCF 87%"],"SupplementaryFig28.png","Supplementary Fig. 28 | Per-replicate Gaussian-mutation effect on the PPC acceptance for KCoHCF electrode (90% and 87% thresholds). Pink circles, with GM; grey triangles, without GM.")
-t3gm(["Urea 90%","Urea 86%"],"SupplementaryFig29.png","Supplementary Fig. 29 | Per-replicate Gaussian-mutation effect on the PPC acceptance for PePurease beads (90% and 86% thresholds). Pink circles, with GM; grey triangles, without GM.")
+t3gm(["KCoHCF 90%","KCoHCF 87%"],"SupplementaryFig66.png","Supplementary Fig. 66 | Per-replicate Gaussian-mutation effect on the PPC acceptance for KCoHCF electrode (90% and 87% thresholds). Pink circles, with GM; grey triangles, without GM.")
+t3gm(["Urea 90%","Urea 86%"],"SupplementaryFig67.png","Supplementary Fig. 67 | Per-replicate Gaussian-mutation effect on the PPC acceptance for PePurease beads (90% and 86% thresholds). Pink circles, with GM; grey triangles, without GM.")
 print("S1/S2/S5 ok")
 
-# ===== Supplementary Fig. 30 strict-vs-soft / Fig. 31 calibration =====
+# ===== Supplementary Fig. 68 strict-vs-soft / Fig. 69 calibration =====
 pi=pd.read_csv(os.path.join(OUT,"figs","gm_pushto1_impact.csv"),index_col=0)
 fig,axes=plt.subplots(1,3,figsize=(180*MM,58*MM)); x=[0,1]; lab=["Soft\n(triggered)","Strict\n(forced)"]
 for ax,(row,ylab,ttl) in zip(axes,[("acc","PPC acceptance","Constraint satisfaction"),("RUL_MAE","RUL MAE (cycles)","Accuracy (unchanged)"),("track_RMSE","Tracking RMSE (%)","Tracking (collapses)")]):
     ax.bar(x,[pi.loc[row,"trig"],pi.loc[row,"strict"]],color=[PINK,GREY],width=0.6); ax.set_xticks(x); ax.set_xticklabels(lab,fontsize=5.5); ax.set_ylabel(ylab); ax.set_title(ttl); frame(ax)
 axes[0].set_ylim(0,1.08)
-fig.suptitle("Supplementary Fig. 30 | Soft versus strict Gaussian mutation performance: forcing acceptance to ~1 leaves RUL accuracy unchanged but degrades tracking ~3.5-fold.",fontsize=5.8,y=1.04)
-fig.tight_layout(pad=0.5,rect=[0,0,1,0.95]); savef(fig,os.path.join(F_SI,"SupplementaryFig30.png"),bbox_inches="tight"); plt.close(fig)
+fig.suptitle("Supplementary Fig. 68 | Soft versus strict Gaussian mutation performance: forcing acceptance to ~1 leaves RUL accuracy unchanged but degrades tracking ~3.5-fold.",fontsize=5.8,y=1.04)
+fig.tight_layout(pad=0.5,rect=[0,0,1,0.95]); savef(fig,os.path.join(F_SI,"SupplementaryFig68.png"),bbox_inches="tight"); plt.close(fig)
 
 cal=pd.read_csv(os.path.join(OUT,"figs","calibration.csv"))
 fig,ax=plt.subplots(figsize=(88*MM,82*MM))
@@ -1664,13 +1664,13 @@ ax.plot(cal.nominal_pct,cal.raw_coverage_pct,marker="^",ms=4.5,mew=0,lw=1.1,colo
 ax.plot(cal.nominal_pct,cal.conformal_coverage_pct,marker="o",ms=4.5,mew=0,lw=1.4,color=PINK,label="After conformal calibration")
 ax.set_xlabel("Nominal coverage (%)"); ax.set_ylabel("Empirical coverage (%)"); ax.set_xlim(45,100); ax.set_ylim(0,100)
 ax.set_title("Conformal calibration reliability"); ax.legend(loc="upper left",fontsize=6); frame(ax)
-fig.suptitle("Supplementary Fig. 31 | Conformal calibration reliability (empirical vs nominal coverage; grey, raw model interval; pink, after split-conformal calibration).",fontsize=5.8,y=1.02)
-fig.tight_layout(pad=0.5); savef(fig,os.path.join(F_SI,"SupplementaryFig31.png"),bbox_inches="tight"); plt.close(fig)
+fig.suptitle("Supplementary Fig. 69 | Conformal calibration reliability (empirical vs nominal coverage; grey, raw model interval; pink, after split-conformal calibration).",fontsize=5.8,y=1.02)
+fig.tight_layout(pad=0.5); savef(fig,os.path.join(F_SI,"SupplementaryFig69.png"),bbox_inches="tight"); plt.close(fig)
 print("strict-vs-soft / calibration ok")
 
 
 # %%
-# --- Error vs observed fraction (Fig. 7C / Supplementary Fig. 25) ---
+# --- Error vs observed fraction (Fig. 7D / Supplementary Fig. 63) ---
 import os, numpy as np, pandas as pd, matplotlib.pyplot as plt
 MMARK4=dict(MMARK); MMARK4["Log-Bayes"]="D"
 MLAB4=dict(MLAB); MLAB4["Log-Bayes"]="Log-Bayes"
@@ -1747,8 +1747,8 @@ for ax,(task,title) in zip(axes,TASKS):
     if task=="task1": ax.legend(loc="lower left",fontsize=5.4,handlelength=1.4,labelspacing=0.3)
 fig.suptitle("Absolute RUL error vs observed fraction: SPI+CBU is consistently lowest at every stage of life",fontsize=7,y=1.01)
 fig.tight_layout(pad=0.6,rect=[0,0,1,0.98])
-savef(fig,os.path.join(F_MAIN,"Fig7C.png"),bbox_inches="tight")
-savef(fig,os.path.join(F_SI,"SupplementaryFig25.png"),bbox_inches="tight"); plt.close(fig)
+savef(fig,os.path.join(F_MAIN,"Fig7D.png"),bbox_inches="tight")
+savef(fig,os.path.join(F_SI,"SupplementaryFig63.png"),bbox_inches="tight"); plt.close(fig)
 print("average ok")
 
 # %%
@@ -1849,11 +1849,11 @@ t1=pd.read_csv(os.path.join(OUT,"task1_curves.csv"))
 t2=pd.read_csv(os.path.join(OUT,"task2_curves.csv"))
 t3=pd.read_csv(os.path.join(OUT,"task3_curves.csv"))
 
-# ---- Fig. 7A : short-term RUL validation (NH4Cl|NaCoHCF) ----
+# ---- Fig. 7B : short-term RUL validation (NH4Cl|NaCoHCF) ----
 d=t2[t2.trajectory=="NH4Cl | NaCoHCF"][RULCOLS]
-w(d,"SourceData_Fig7A.csv")
+w(d,"SourceData_Fig7B.csv")
 
-# ---- forward-projection source (shared by Fig. 7B and the linear/log projection figures) ----
+# ---- forward-projection source (shared by Fig. 7C and the linear/log projection figures) ----
 def projection_dataset():
     rows=[]
     for mat,info in MATS.items():
@@ -1868,50 +1868,50 @@ def projection_dataset():
             if np.isfinite(R["cb"]): rows.append(dict(material=mat,replicate=rep,series="projected_80pct_life",cycle=float(R["cb"]),value=80.0,ci_lo=np.nan,ci_hi=np.nan))
     return pd.DataFrame(rows)
 proj=projection_dataset()
-w(proj,"SourceData_Fig7B.csv")
+w(proj,"SourceData_Fig7C.csv")
 w(proj,"SourceData_forward_projection_log_perrep.csv")
-w(proj,"SourceData_SupplementaryFig20_21.csv")
+w(proj,"SourceData_SupplementaryFig58_59.csv")
 
-# ---- Extended Data Fig. 8 : 56-trajectory RUL (diagonal truth already in CSV) ----
-w(t1[["trajectory"]+RULCOLS],"SourceData_ExtendedDataFig8.csv")
-# ---- Extended Data Fig. 9 : triplicate deployed-material RUL ----
-w(t3[["material","threshold","replicate","method","cycle","true_RUL","pred_RUL","RUL_lo_cal90","RUL_hi_cal90"]],"SourceData_ExtendedDataFig9.csv")
+# ---- Supplementary Fig. 54 : 56-trajectory RUL (diagonal truth already in CSV) ----
+w(t1[["trajectory"]+RULCOLS],"SourceData_SupplementaryFig54.csv")
+# ---- Supplementary Fig. 70 : triplicate deployed-material RUL ----
+w(t3[["material","threshold","replicate","method","cycle","true_RUL","pred_RUL","RUL_lo_cal90","RUL_hi_cal90"]],"SourceData_SupplementaryFig70.csv")
 
-# ---- Supplementary Fig. 22 : 56-trajectory capacity tracking ----
-w(t1[["trajectory","method","cycle","actual_retention","pred_retention"]],"SourceData_SupplementaryFig22.csv")
-# ---- Supplementary Fig. 18 RUL / Fig. 19 tracking, reaching-to-80% set ----
+# ---- Supplementary Fig. 60 : 56-trajectory capacity tracking ----
+w(t1[["trajectory","method","cycle","actual_retention","pred_retention"]],"SourceData_SupplementaryFig60.csv")
+# ---- Supplementary Fig. 56 RUL / Fig. 57 tracking, reaching-to-80% set ----
 cov2=pd.read_csv(os.path.join(OUT,"task2_coverage_per_trajectory.csv")).rename(columns={"traj":"trajectory"})
 s7a=t2[["trajectory"]+RULCOLS].merge(cov2,on="trajectory",how="left")
-w(s7a,"SourceData_SupplementaryFig18.csv")
-w(t2[["trajectory","method","cycle","actual_retention","pred_retention"]],"SourceData_SupplementaryFig19.csv")
-# ---- Supplementary Figs 23/24 : Task 3 triplicate tracking ----
-w(t3[t3.material=="KCoHCF"][["material","threshold","replicate","method","cycle","actual","pred_retention"]],"SourceData_SupplementaryFig23.csv")
-w(t3[t3.material=="Urea"][["material","threshold","replicate","method","cycle","actual","pred_retention"]],"SourceData_SupplementaryFig24.csv")
+w(s7a,"SourceData_SupplementaryFig56.csv")
+w(t2[["trajectory","method","cycle","actual_retention","pred_retention"]],"SourceData_SupplementaryFig57.csv")
+# ---- Supplementary Figs 61/62 : Task 3 triplicate tracking ----
+w(t3[t3.material=="KCoHCF"][["material","threshold","replicate","method","cycle","actual","pred_retention"]],"SourceData_SupplementaryFig61.csv")
+w(t3[t3.material=="Urea"][["material","threshold","replicate","method","cycle","actual","pred_retention"]],"SourceData_SupplementaryFig62.csv")
 
 
 # ---- GM figures ----
-try: shutil.copy(os.path.join(OUT,"figs","gm_effect_task1.csv"),os.path.join(SD,"SourceData_SupplementaryFig26.csv")); print("Fig26 copied")
-except PermissionError: print("LOCKED:",("Fig26"))
-try: shutil.copy(os.path.join(OUT,"gm_effect_task2_panels.csv"),os.path.join(SD,"SourceData_SupplementaryFig27.csv")); print("Fig27 copied")
-except PermissionError: print("LOCKED: Fig27")
+try: shutil.copy(os.path.join(OUT,"figs","gm_effect_task1.csv"),os.path.join(SD,"SourceData_SupplementaryFig64.csv")); print("Fig64 copied")
+except PermissionError: print("LOCKED:",("Fig64"))
+try: shutil.copy(os.path.join(OUT,"gm_effect_task2_panels.csv"),os.path.join(SD,"SourceData_SupplementaryFig65.csv")); print("Fig65 copied")
+except PermissionError: print("LOCKED: Fig65")
 g3p=pd.read_csv(os.path.join(OUT,"gm_effect_task3_panels.csv"))
-w(g3p[g3p.case.str.startswith("KCoHCF")],"SourceData_SupplementaryFig28.csv")
-w(g3p[g3p.case.str.startswith("Urea")],"SourceData_SupplementaryFig29.csv")
-# Extended Data Fig. 10 : averaged GM ablation (combine 3 panels)
+w(g3p[g3p.case.str.startswith("KCoHCF")],"SourceData_SupplementaryFig66.csv")
+w(g3p[g3p.case.str.startswith("Urea")],"SourceData_SupplementaryFig67.csv")
+# Supplementary Fig. 55 : averaged GM ablation (combine 3 panels)
 g1=pd.read_csv(os.path.join(OUT,"gm_effect_task1_average.csv")); g1.insert(0,"panel","Task 1"); g1=g1.rename(columns={"cycle":"x"})
 g2=pd.read_csv(os.path.join(OUT,"gm_effect_task2.csv")); g2.insert(0,"panel","Task 2"); g2=g2.rename(columns={"frac_pct":"x"})
 g3=pd.read_csv(os.path.join(OUT,"gm_effect_task3_average.csv")); g3.insert(0,"panel","Task 3 ("+g3["case"]+")"); g3=g3.rename(columns={"frac_pct":"x"}).drop(columns=["case"])
-w(pd.concat([g1,g2,g3],ignore_index=True),"SourceData_ExtendedDataFig10.csv")
+w(pd.concat([g1,g2,g3],ignore_index=True),"SourceData_SupplementaryFig55.csv")
 
-# ---- Supplementary Fig. 30 strict-vs-soft / Fig. 31 calibration ----
-w(pd.read_csv(os.path.join(OUT,"figs","gm_pushto1_impact.csv")).rename(columns={"Unnamed: 0":"metric"}),"SourceData_SupplementaryFig30.csv")
-try: shutil.copy(os.path.join(OUT,"figs","calibration.csv"),os.path.join(SD,"SourceData_SupplementaryFig31.csv")); print("Fig31 copied")
-except PermissionError: print("LOCKED: Fig31")
+# ---- Supplementary Fig. 68 strict-vs-soft / Fig. 69 calibration ----
+w(pd.read_csv(os.path.join(OUT,"figs","gm_pushto1_impact.csv")).rename(columns={"Unnamed: 0":"metric"}),"SourceData_SupplementaryFig68.csv")
+try: shutil.copy(os.path.join(OUT,"figs","calibration.csv"),os.path.join(SD,"SourceData_SupplementaryFig69.csv")); print("Fig69 copied")
+except PermissionError: print("LOCKED: Fig69")
 
-# ---- Fig. 7C / Supplementary Fig. 25 error average ----
+# ---- Fig. 7D / Supplementary Fig. 63 error average ----
 try:
-    shutil.copy(os.path.join(OUT,"error_vs_fraction_average.csv"),os.path.join(SD,"SourceData_Fig7C.csv"))
-    shutil.copy(os.path.join(OUT,"error_vs_fraction_average.csv"),os.path.join(SD,"SourceData_SupplementaryFig25.csv")); print("Fig7C/Fig25 copied")
+    shutil.copy(os.path.join(OUT,"error_vs_fraction_average.csv"),os.path.join(SD,"SourceData_Fig7D.csv"))
+    shutil.copy(os.path.join(OUT,"error_vs_fraction_average.csv"),os.path.join(SD,"SourceData_SupplementaryFig63.csv")); print("Fig7D/Fig63 copied")
 except PermissionError: print("LOCKED: error-average")
 
 print("\nSOURCE DATA FILES:")

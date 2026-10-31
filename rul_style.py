@@ -4,8 +4,8 @@ import os, numpy as np, pandas as pd
 import matplotlib as mpl, matplotlib.pyplot as plt
 
 ROOT=os.getcwd(); OUT=os.path.join(ROOT,"outputs"); DD=os.path.join(ROOT,"Electrode_RUL_Data")
-F_MAIN=os.path.join(OUT,"fig_main"); F_ED=os.path.join(OUT,"fig_ED"); F_SI=os.path.join(OUT,"fig_SI")
-for d in (F_MAIN,F_ED,F_SI): os.makedirs(d,exist_ok=True)
+F_MAIN=os.path.join(OUT,"fig_main"); F_SI=os.path.join(OUT,"fig_SI")
+for d in (F_MAIN,F_SI): os.makedirs(d,exist_ok=True)
 PINK="#D6337C"; BLUE="#2E6FAE"; GREY="#8A8A8A"; DARK="#1A1A1A"; FLOOR="#C0792E"; OLIVE="#B8A11E"; TEAL="#1F9E89"; PURPLE="#7B4FA3"
 mpl.rcParams.update({"font.family":"sans-serif","font.sans-serif":["Arial","DejaVu Sans"],
   "font.size":7,"axes.titlesize":7,"axes.labelsize":7,"xtick.labelsize":6,"ytick.labelsize":6,

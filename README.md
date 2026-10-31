@@ -9,11 +9,11 @@ Self-contained code, data of **every RUL figure and data table** in the manuscri
 |---|---|---|
 | 1 | `add_logbayes.py`   | adds the Log-Bayes baseline to the Task 2/3 per-cycle CSVs |
 | 2 | `add_baselines.py`  | adds Wiener + Weibull baselines; prints the check that SPI+CBU has the lowest MAE in every case |
-| 3 | `make_main.py`      | main **Fig. 7A, 7B** |
-| 4 | `make_ED.py`        | **Extended Data Fig. 8, 9** |
-| 5 | `make_SI.py`        | **Supplementary Figs 18-30** (GM panels, tracking, projection, strict-vs-soft) and **Extended Data Fig. 10** (averaged GM ablation) |
-| 6 | `make_error_figs.py`| **absolute-error vs observed-fraction**, averaged (**Fig. 7C / Supplementary Fig. 25**) |
-| 7 | `calib_per_task.py` | **calibration** reliability, averaged across tasks (raw vs conformal, +/-1 STD): **Supplementary Fig. 31** |
+| 3 | `make_main.py`      | main **Fig. 7B, 7C** |
+| 4 | `make_SI_RUL.py`    | **Supplementary Figs 54, 70** |
+| 5 | `make_SI.py`        | **Supplementary Figs 55-68** (averaged GM ablation, GM panels, tracking, projection, strict-vs-soft) |
+| 6 | `make_error_figs.py`| **absolute-error vs observed-fraction**, averaged (**Fig. 7D / Supplementary Fig. 63**) |
+| 7 | `calib_per_task.py` | **calibration** reliability, averaged across tasks (raw vs conformal, +/-1 STD): **Supplementary Fig. 69** |
 | 8 | `export_new_data.py`| `method_comparison_mae.csv`, error-vs-fraction CSVs |
 | 9 | `export_metrics.py` | `per_panel_metrics.csv`, `per_task_metrics_summary.csv` (RMSE & MAE) |
 | 10 | `export_source_data.py` | one tidy `SourceData_<FigID>.csv` per figure (Nature source-data requirement) |
@@ -22,10 +22,9 @@ Self-contained code, data of **every RUL figure and data table** in the manuscri
 
 ```
 outputs/
-├── fig_main/        Fig7A, Fig7B, Fig7C                                   (png + svg)
-├── fig_ED/          ExtendedDataFig8, ExtendedDataFig9, ExtendedDataFig10, forward_projection_log_perrep
-├── fig_SI/          SupplementaryFig18-31, forward_projection_{KCoHCF,Urea}_log    (png + svg)
-├── source_data/     SourceData_Fig7A/B/C, ExtendedDataFig8/9/10, SupplementaryFig18-31 (one CSV per figure)
+├── fig_main/        Fig7B, Fig7C, Fig7D                                   (png + svg)
+├── fig_SI/          SupplementaryFig54-70, forward_projection_{KCoHCF,Urea}_log, forward_projection_log_perrep    (png + svg)
+├── source_data/     SourceData_Fig7B/C/D, SupplementaryFig54-70 (one CSV per figure)
 ├── additional_data/
       ├── method_comparison_mae.csv      RUL MAE, all tasks x all 6 methods
       ├── per_panel_metrics.csv          RMSE & MAE per panel per method (RUL + tracking)
@@ -40,22 +39,22 @@ The output file names match the manuscript display items directly:
 
 | File | Manuscript item |
 |---|---|
-| `fig_main/Fig7A` | Fig. 7A - short-term RUL validation (all tasks) |
-| `fig_main/Fig7B` | Fig. 7B - capacity/activity forward projection |
-| `fig_main/Fig7C` | Fig. 7C - absolute RUL error vs observed fraction (averaged) |
-| `fig_ED/ExtendedDataFig8` | Extended Data Fig. 8 - RUL on the 56 screening trajectories |
-| `fig_ED/ExtendedDataFig9` | Extended Data Fig. 9 - triplicate deployed-material RUL |
-| `fig_ED/ExtendedDataFig10` | Extended Data Fig. 10 - GM ablation, averaged across tasks |
-| `fig_SI/SupplementaryFig18` | RUL prediction to the 80% threshold (reaching set) |
-| `fig_SI/SupplementaryFig19` | Capacity tracking to the 80% threshold (reaching set) |
-| `fig_SI/SupplementaryFig20`, `21` | Forward projection to 80%, KCoHCF and PePurease (linear axis) |
-| `fig_SI/SupplementaryFig22` | Capacity tracking across the 56 screening trajectories |
-| `fig_SI/SupplementaryFig23`, `24` | Triplicate tracking, KCoHCF and PePurease |
-| `fig_SI/SupplementaryFig25` | Absolute RUL error vs observed fraction (averaged; copy of Fig. 7C) |
-| `fig_SI/SupplementaryFig26`, `27` | Per-trajectory GM effect, screening set |
-| `fig_SI/SupplementaryFig28`, `29` | Per-replicate GM effect, KCoHCF and PePurease |
-| `fig_SI/SupplementaryFig30` | Soft (triggered) vs strict GM |
-| `fig_SI/SupplementaryFig31` | Conformal calibration reliability, averaged across tasks |
+| `fig_main/Fig7B` | Fig. 7B - short-term RUL validation against the baselines |
+| `fig_main/Fig7C` | Fig. 7C - capacity/activity forward projection |
+| `fig_main/Fig7D` | Fig. 7D - absolute RUL error vs observed fraction (averaged) |
+| `fig_SI/SupplementaryFig54` | RUL on the 56 screening trajectories |
+| `fig_SI/SupplementaryFig55` | GM ablation, averaged across tasks |
+| `fig_SI/SupplementaryFig56` | RUL prediction to the 80% threshold (reaching set) |
+| `fig_SI/SupplementaryFig57` | Capacity tracking to the 80% threshold (reaching set) |
+| `fig_SI/SupplementaryFig58`, `59` | Forward projection to 80%, KCoHCF and PePurease (linear axis) |
+| `fig_SI/SupplementaryFig60` | Capacity tracking across the 56 screening trajectories |
+| `fig_SI/SupplementaryFig61`, `62` | Triplicate tracking, KCoHCF and PePurease |
+| `fig_SI/SupplementaryFig63` | Absolute RUL error vs observed fraction (averaged; copy of Fig. 7D) |
+| `fig_SI/SupplementaryFig64`, `65` | Per-trajectory GM effect, screening set and trajectories reaching 80% |
+| `fig_SI/SupplementaryFig66`, `67` | Per-replicate GM effect, KCoHCF and PePurease |
+| `fig_SI/SupplementaryFig68` | Soft (triggered) vs strict GM |
+| `fig_SI/SupplementaryFig69` | Conformal calibration reliability, averaged across tasks |
+| `fig_SI/SupplementaryFig70` | Triplicate deployed-material RUL |
 
 Source-data CSVs in `source_data/` carry the matching `SourceData_<item>.csv` name for every figure above.
 
@@ -66,7 +65,7 @@ Source-data CSVs in `source_data/` carry the matching `SourceData_<item>.csv` na
 | `rul_style.py` | palette, plotting helpers, projection engine (imported by the `make_*` scripts) |
 | `task3_triplicate.py`, `task4_triplicate.py` | core RUL engine (basis, SBL, online update, PPC, GM, projection) |
 | `add_logbayes.py`, `add_baselines.py` | append the comparison baselines to the per-cycle CSVs |
-| `make_main.py`, `make_ED.py`, `make_SI.py`, `make_error_figs.py`, `calib_per_task.py` | figure generators |
+| `make_main.py`, `make_SI_RUL.py`, `make_SI.py`, `make_error_figs.py`, `calib_per_task.py` | figure generators |
 | `export_new_data.py`, `export_metrics.py`, `export_source_data.py` | data / metric / source-data tables |
 | `export_all_results.py` | upstream: rebuilds the per-cycle result CSVs from raw data (see note below) |
 | `Electrode_RUL_Colab.py` | complete original analysis notebook (full upstream pipeline, reference) |
